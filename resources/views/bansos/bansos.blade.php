@@ -260,6 +260,42 @@
 
             description.innerHTML =
                 "<h2>Rw 3 memiliki jumlah keluarga terbanyak yaitu berjumlah 27 keluarga, sedangkan Rw 6,8 memiliki jumlah keluarga yang layak mendapat bantuan sosial paling sedikit berjumlah 15 keluarga.</h2>";
+            chart = new Chart(ctx, {
+                type: 'bar', // Tipe chart batang
+                data: {
+                    labels: labels, // Label RW
+                    datasets: [{
+                        label: 'Layak',
+                        data: layakData,
+                        backgroundColor: 'rgba(75, 192, 192, 0.6)', // Warna hijau
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        title: {
+                            display: true,
+                            text: 'Jumlah Kepala Keluarga Berdasarkan RW'
+                        }
+                    }
+                }
+            });
+
+            // Menampilkan tabel yang relevan sesuai dengan jenis chart yang dipilih
+            tableContainer.style.display = 'block';
+
+            // Menyisipkan baris tabel ke dalam tabel
+            document.getElementById('table-body').innerHTML = tableRows.join('');
         } else if (type === 'tidakLayak') {
             $(document).ready(function() {
                 $("#table-container")
@@ -295,7 +331,42 @@
 
             description.innerHTML =
                 "<h2>Rw 5 memiliki jumlah keluarga yang Tidak Layak mendapat bantuan sosial terbanyak yaitu berjumlah 28 keluarga, sedangkan Rw 10 memiliki jumlah keluarga yang Tidak Layak mendapat bantuan sosial paling sedikit berjumlah 16 keluarga.</h2>";
+            chart = new Chart(ctx, {
+                type: 'bar', // Tipe chart batang
+                data: {
+                    labels: labels, // Label RW
+                    datasets: [{
+                        label: 'Tidak Layak',
+                        data: tidakLayakData,
+                        backgroundColor: 'rgba(255, 99, 132, 0.6)', // Warna merah
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        title: {
+                            display: true,
+                            text: 'Jumlah Kepala Keluarga Berdasarkan RW'
+                        }
+                    }
+                }
+            });
 
+            // Menampilkan tabel yang relevan sesuai dengan jenis chart yang dipilih
+            tableContainer.style.display = 'block';
+
+            // Menyisipkan baris tabel ke dalam tabel
+            document.getElementById('table-body').innerHTML = tableRows.join('');
         } else if (type === 'semua') {
             $(document).ready(function() {
                 $("#table-container")
@@ -331,6 +402,50 @@
 
             description.innerHTML =
                 "<h2>Rw 3 memiliki jumlah keluarga yang layak mendapat bantuan sosial terbanyak yaitu berjumlah 25 keluarga Dan Rw 5 memiliki jumlah keluarga yang Tidak Layak mendapat bantuan sosial paling banyak berjumlah 28 keluarga.</h2>";
+            chart = new Chart(ctx, {
+                type: 'bar', // Tipe chart batang
+                data: {
+                    labels: labels, // Label RW
+                    datasets: [{
+                            label: 'Layak',
+                            data: layakData,
+                            backgroundColor: 'rgba(75, 192, 192, 0.6)', // Warna hijau
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'Tidak Layak',
+                            data: tidakLayakData,
+                            backgroundColor: 'rgba(255, 99, 132, 0.6)', // Warna merah
+                            borderColor: 'rgba(255, 99, 132, 1)',
+                            borderWidth: 1
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        title: {
+                            display: true,
+                            text: 'Jumlah Kepala Keluarga Berdasarkan RW'
+                        }
+                    }
+                }
+            });
+
+            // Menampilkan tabel yang relevan sesuai dengan jenis chart yang dipilih
+            tableContainer.style.display = 'block';
+
+            // Menyisipkan baris tabel ke dalam tabel
+            document.getElementById('table-body').innerHTML = tableRows.join('');
         } else if (type === 'semuakk') {
             $(document).ready(function() {
                 $("#table-container")
@@ -366,6 +481,42 @@
 
             description.innerHTML =
                 "<h2>Berdasarkan hasil klasifikasi yang dilakukan menggunakan algoritma K-Means, data penerima bantuan sosial menunjukkan bahwa RW 1, RW 2, dan RW 3 menyumbang jumlah keluarga terbanyak, yaitu sebanyak 44 Keluarga. sedangkan rw 7 menyumbang jumlah keluarga paling dikit yang berjumlah 33 Keluarga untuk mendapatkan penerimaan bantuan sosial.</h2>";
+            chart = new Chart(ctx, {
+                type: 'bar', // Tipe chart batang
+                data: {
+                    labels: labels, // Label RW
+                    datasets: [{
+                        label: 'Total',
+                        data: totalData,
+                        backgroundColor: 'rgba(54, 162, 235, 0.6)', // Warna biru
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        title: {
+                            display: true,
+                            text: 'Jumlah Kepala Keluarga Berdasarkan RW'
+                        }
+                    }
+                }
+            });
+
+            // Menampilkan tabel yang relevan sesuai dengan jenis chart yang dipilih
+            tableContainer.style.display = 'block';
+
+            // Menyisipkan baris tabel ke dalam tabel
+            document.getElementById('table-body').innerHTML = tableRows.join('');
         } else if (type === 'landingpages') {
             $(document).ready(function() {
                 $("#table-container")
@@ -402,61 +553,62 @@
             });
             description.innerHTML =
                 "<h2>Diagram batang ini menampilkan perbandingan yang layak dan tidak layak dari keseluruhan jumlah kepala keluarga di setiap RW.</h2>";
+            chart = new Chart(ctx, {
+                type: 'bar', // Tipe chart batang
+                data: {
+                    labels: labels, // Label RW
+                    datasets: [{
+                            label: 'Total',
+                            data: totalData,
+                            backgroundColor: 'rgba(54, 162, 235, 0.6)', // Warna biru
+                            borderColor: 'rgba(54, 162, 235, 1)',
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'Layak',
+                            data: layakData,
+                            backgroundColor: 'rgba(75, 192, 192, 0.6)', // Warna hijau
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'Tidak Layak',
+                            data: tidakLayakData,
+                            backgroundColor: 'rgba(255, 99, 132, 0.6)', // Warna merah
+                            borderColor: 'rgba(255, 99, 132, 1)',
+                            borderWidth: 1
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        title: {
+                            display: true,
+                            text: 'Jumlah Kepala Keluarga Berdasarkan RW'
+                        }
+                    }
+                }
+            });
+
+            // Menampilkan tabel yang relevan sesuai dengan jenis chart yang dipilih
+            tableContainer.style.display = 'block';
+
+            // Menyisipkan baris tabel ke dalam tabel
+            document.getElementById('table-body').innerHTML = tableRows.join('');
         }
 
 
         // Buat diagram batang baru dengan data yang sesuai
-        chart = new Chart(ctx, {
-            type: 'bar', // Tipe chart batang
-            data: {
-                labels: labels, // Label RW
-                datasets: [{
-                        label: 'Total',
-                        data: totalData,
-                        backgroundColor: 'rgba(54, 162, 235, 0.6)', // Warna biru
-                        borderColor: 'rgba(54, 162, 235, 1)',
-                        borderWidth: 1
-                    },
-                    {
-                        label: 'Layak',
-                        data: layakData,
-                        backgroundColor: 'rgba(75, 192, 192, 0.6)', // Warna hijau
-                        borderColor: 'rgba(75, 192, 192, 1)',
-                        borderWidth: 1
-                    },
-                    {
-                        label: 'Tidak Layak',
-                        data: tidakLayakData,
-                        backgroundColor: 'rgba(255, 99, 132, 0.6)', // Warna merah
-                        borderColor: 'rgba(255, 99, 132, 1)',
-                        borderWidth: 1
-                    }
-                ]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                },
-                plugins: {
-                    legend: {
-                        position: 'top',
-                    },
-                    title: {
-                        display: true,
-                        text: 'Jumlah Kepala Keluarga Berdasarkan RW'
-                    }
-                }
-            }
-        });
 
-        // Menampilkan tabel yang relevan sesuai dengan jenis chart yang dipilih
-        tableContainer.style.display = 'block';
-
-        // Menyisipkan baris tabel ke dalam tabel
-        document.getElementById('table-body').innerHTML = tableRows.join('');
     }
 </script>
 
