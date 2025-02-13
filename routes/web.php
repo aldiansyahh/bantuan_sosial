@@ -6,6 +6,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\MasterController;
 use App\Http\Controllers\PenerimabansosController;
 use App\Http\Controllers\BansosController;
+use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\RiwayatPenerimaController;
 use App\Http\Controllers\SudahDibayarController;
 use App\Models\Bansos;
@@ -25,7 +26,8 @@ use App\Models\Bansos;
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('/bansos', [BansosController::class, 'index'])->name('bansos');
+Route::post('/pengguna/store', [PenggunaController::class, 'store'])->name('pengguna.store');
 Route::get('/master', [MasterController::class, 'master'])->name('master');
 Route::get('/bansos', [BansosController::class, 'search'])->name('bansos');
 Route::get('/bansos', [BansosController::class, 'bansos'])->name('bansos');

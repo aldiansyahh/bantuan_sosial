@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bansos;
+use App\Models\Pengguna;
 use App\Imports\BansosImport;
 use Illuminate\Http\Request;
 use App\Models\SudahDibayar;
@@ -30,43 +31,76 @@ class BansosController extends Controller
 
     public function bansos(Request $request)
     {
+        // Ambil data terakhir dari info_pengguna
+        $infoPengguna = Pengguna::latest()->first();
+
+        // Pastikan data tidak null agar tidak error
+        $tahun = $infoPengguna->tahun ?? 'Tahun Tidak Ditemukan';
+        $judul = $infoPengguna->judul ?? 'Judul Tidak Ditemukan';
+
+        // Menghitung total data
         $totalKeluarga = Bansos::count();
         $totalLayak = Bansos::where('keterangan', 'Layak')->count();
         $totalTidakLayak = Bansos::where('keterangan', 'Tidak Layak')->count();
 
-        // Mengambil data kepala keluarga dengan menghitung jumlah total, layak, dan tidak layak
+        // Mengambil data kepala keluarga dengan menghitung jumlah total, layak, dan tidak layak per RW
         $dataKepalaKeluarga = Bansos::select(
-            'rw', // Menampilkan RW
-            Bansos::raw('COUNT(*) as total'), // Jumlah total kepala keluarga
-            Bansos::raw("SUM(CASE WHEN keterangan = 'Layak' THEN 1 ELSE 0 END) as layak"), // Menghitung 'Layak'
-            Bansos::raw("SUM(CASE WHEN keterangan = 'Tidak Layak' THEN 1 ELSE 0 END) as tidak_layak") // Menghitung 'Tidak Layak'
-
+            'rw',
+            Bansos::raw('COUNT(*) as total'),
+            Bansos::raw("SUM(CASE WHEN keterangan = 'Layak' THEN 1 ELSE 0 END) as layak"),
+            Bansos::raw("SUM(CASE WHEN keterangan = 'Tidak Layak' THEN 1 ELSE 0 END) as tidak_layak")
         )
-            ->groupBy('rw') // Kelompokkan berdasarkan RW
+            ->groupBy('rw')
             ->get();
 
-
-        $status = $request->input('status', 'all'); // Mengambil status filter (all, layak, tidak layak)
+        // Filter berdasarkan status
+        $status = $request->input('status', 'all');
 
         if ($status == 'layak') {
-            // Menampilkan semua data yang 'Layak' sesuai filter
             $kepala_keluarga = Bansos::where('keterangan', 'Layak')->get();
         } elseif ($status == 'tidakLayak') {
-            // Menampilkan semua data yang 'Tidak Layak' sesuai filter
             $kepala_keluarga = Bansos::where('keterangan', 'Tidak Layak')->get();
         } else {
-            // Menampilkan semua data tanpa filter
             $kepala_keluarga = Bansos::all();
         }
-        // Mengembalikan data ke view
-        return view('bansos.bansos', compact('dataKepalaKeluarga', 'kepala_keluarga', 'totalKeluarga', 'totalLayak', 'totalTidakLayak'));
+
+        // Mengembalikan data ke view dengan tambahan judul dan tahun
+        return view('bansos.bansos', compact(
+            'dataKepalaKeluarga',
+            'kepala_keluarga',
+            'totalKeluarga',
+            'totalLayak',
+            'totalTidakLayak',
+            'tahun',
+            'judul'
+        ));
     }
+
+
+
+
 
 
 
 
     public function bansosimportexcel(Request $request)
     {
+
+
+        // Validasi input
+        $request->validate([
+            'judul' => 'required|string|max:255',
+            'tahun' => 'required|integer|min:2020|max:2030',
+            'file' => 'required|file|mimes:xlsx,csv,xls'
+        ]);
+
+        // Simpan judul dan tahun ke dalam tabel info_pengguna
+        $infoPengguna = new Pengguna();
+        $infoPengguna->judul = $request->judul;
+        $infoPengguna->tahun = $request->tahun;
+        $infoPengguna->save();
+        $tahun = $request->input('tahun', date('Y')); // Default tahun ke tahun saat ini
+        $judul = $request->input('judul', 'judul'); // Default judul jika tidak ada input
         // Memastikan file diunggah
         $file = $request->file('file');
 

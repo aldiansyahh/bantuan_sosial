@@ -20,17 +20,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <div class="wrapper">
 
         <nav class="main-header navbar navbar-expand navbar-dark-primary elevation-4 fixed-top"
-            style="background-color: #003366; height: 8%;">
+            style="background-color: #003366; height: 5%;">
             <!-- Left navbar links -->
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link mt-2" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"
                             style="color: #ffffff; "></i></a>
                 </li>
-                <li class="nav-item mt-1 d-none d-sm-inline-block">
-                    <p href="" class="nav-link" style="color: #ffffff;">Klasifikasi Kelayakan Penerimaan Bantuan
-                        Sosial</p>
-                </li>
+
             </ul>
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">

@@ -111,6 +111,21 @@
                                         placeholder="Masukkan Judul Data" required>
                                 </div> --}}
                                 <div class="form-group">
+                                    <label for="judul" class="form-label">Nama Kelurahan</label>
+                                    <input type="text" name="judul" id="judul" class="form-control"
+                                        placeholder="Masukkan Nama Kelurahan " required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="tahun" class="form-label">Pilih Tahun</label>
+                                    <select name="tahun" id="tahun" class="form-control" required>
+                                        <option value="">Pilih Tahun</option>
+                                        <!-- Loop untuk menampilkan tahun 2020 sampai 2030 -->
+                                        @for ($i = 2020; $i <= 2030; $i++)
+                                            <option value="{{ $i }}">{{ $i }}</option>
+                                        @endfor
+                                    </select>
+                                </div>
+                                <div class="form-group">
 
                                     <label for="file-upload" class="form-label">Pilih File Data (Excel)</label>
 

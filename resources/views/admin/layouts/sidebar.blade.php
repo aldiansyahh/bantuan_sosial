@@ -23,7 +23,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: #003366;">
             <!-- Brand Logo -->
             <p href="" class="brand-link"
-                style="background-color: #336699; color: #ffffff; text-align: center; height: 8%;">
+                style="background-color: #336699; color: #ffffff; text-align: center; height: 5%;">
                 <span class="brand-text font-weight-light"> BANTUAN SOSIAL </span>
             </p>
 
@@ -37,42 +37,22 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
-                        <li class="nav-item menu-open">
+                        <li class="nav-item menu-open mb-2">
                             <a href="#" class="nav-link active"
                                 style="background-color: #336699; color: #ffffff;">
                                 <i class="nav-icon fas fa-bars"></i>
                                 <p>
                                     Menu
-                                    <i class="right fas fa-angle-left"></i>
+
                                 </p>
                             </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{ url('home') }}" class="nav-link">
-                                        <i class="nav-icon fas fa-calculator"></i>
-                                        <p>Hasil Perhitungan</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="" class="nav-link" style="">
-                                        <i class="nav-icon fas fa-check-circle"></i>
-                                        <p>Data Layak</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="" class="nav-link">
-                                        <i class="nav-icon fas fa-chart-bar"></i>
-                                        <p>Visualisasi Data</p>
-                                    </a>
-                                </li>
-                            </ul>
                         </li>
                         <li class="nav-item">
                             <a href="#"
                                 onclick="event.preventDefault(); document.getElementById('reset-form').submit();"
                                 class="nav-link" style="background-color: #336699; color: #ffffff;">
-                                <i class="fas fa-sign-out-alt"></i>
-                                <p>Import Lagi</p>
+                                <i class=" x    fas fa-sign-out-alt"></i>
+                                <p>Keluar</p>
                             </a>
                             <form id="reset-form" action="{{ route('reset.data') }}" method="POST" class="d-none">
                                 @csrf
