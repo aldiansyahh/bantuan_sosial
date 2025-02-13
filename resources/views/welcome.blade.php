@@ -111,9 +111,9 @@
                                         placeholder="Masukkan Judul Data" required>
                                 </div> --}}
                                 <div class="form-group">
-                                    <label for="judul" class="form-label">Nama Kelurahan</label>
+                                    <label for="judul" class="form-label">Judul Data</label>
                                     <input type="text" name="judul" id="judul" class="form-control"
-                                        placeholder="Masukkan Nama Kelurahan " required>
+                                        placeholder="Masukkan Judul Data " required>
                                 </div>
                                 <div class="form-group">
                                     <label for="tahun" class="form-label">Pilih Tahun</label>

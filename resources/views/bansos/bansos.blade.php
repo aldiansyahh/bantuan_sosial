@@ -7,8 +7,8 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6 text-left">
-                        <h1 class="m-0"> Klasifikasi Kelayakan Penerima Bantuan Sosial Pada Tahun {{ $tahun }}<br>
-                            di kelurahan {{ $judul }}</h1>
+                        <h1 class="m-0"> {{ $judul }} Pada Tahun {{ $tahun }}<br>
+                            di kelurahan Karangmekar</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
