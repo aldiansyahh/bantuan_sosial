@@ -38,7 +38,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
                         <li class="nav-item menu-open mb-2">
-                            <a href="#" class="nav-link active"
+                            <a href="/bansos" class="nav-link active"
                                 style="background-color: #336699; color: #ffffff;">
                                 <i class="nav-icon fas fa-bars"></i>
                                 <p>
